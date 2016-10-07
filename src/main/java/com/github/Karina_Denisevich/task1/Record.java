@@ -2,16 +2,38 @@ package com.github.Karina_Denisevich.task1;
 
 import java.time.LocalDateTime;
 
+/**
+ * The class used to store records.
+ *
+ * @author Karina Denisevich
+ * @version 1.0
+ */
 public class Record {
 
+    /**
+     * Property - record.
+     */
     private String record;
+    /**
+     * Property - localDateTime.
+     */
     private LocalDateTime localDateTime;
 
+    /**
+     * Create new object and set current time and specified value.
+     *
+     * @param record record
+     */
     public Record(String record) {
         this.record = record;
         this.localDateTime = LocalDateTime.now();
     }
 
+    /**
+     * The method returns the value of the field {@link Record#record}.
+     *
+     * @return the record
+     */
     public String getRecord() {
         return record;
     }
@@ -20,6 +42,11 @@ public class Record {
         this.record = record;
     }
 
+    /**
+     * The method returns the value of the field {@link Record#localDateTime}.
+     *
+     * @return the date and the time, when Record object was created
+     */
     public LocalDateTime getLocalDateTime() {
         return localDateTime;
     }
