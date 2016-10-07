@@ -1,6 +1,5 @@
 package com.github.Karina_Denisevich.task1;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class App {
@@ -16,7 +15,16 @@ public class App {
         notebook.addRecord(record1);
         notebook.addRecord(record2);
 
-        List<Record> list = new ArrayList<>();
-        list = notebook.getAllRecords();
+        List<Record> list = notebook.getAllRecords();
+
+        for (Record r : list) {
+            System.out.println(r.toString());
+        }
+        notebook.editRecord(record, record1);
+
+        System.out.println("After:");
+        for (Record r : list) {
+            System.out.println(r.toString());
+        }
     }
 }
