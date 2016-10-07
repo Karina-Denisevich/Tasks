@@ -2,20 +2,27 @@ package com.github.Karina_Denisevich.task2;
 
 public class Stationery {
 
-    String name;
-    Double price;
+    public enum TypeEnum {
+        PAPER,
+        PEN,
+        NOTEBOOK,
+        FOLDER;
+    }
 
-    public Stationery(String name, Double price) {
-        this.name = name;
+    private TypeEnum type;
+    private Double price;
+
+    public Stationery(TypeEnum name, Double price) {
+        this.type = name;
         this.price = price;
     }
 
-    public String getName() {
-        return name;
+    public TypeEnum getType() {
+        return type;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setType(TypeEnum type) {
+        this.type = type;
     }
 
     public Double getPrice() {
