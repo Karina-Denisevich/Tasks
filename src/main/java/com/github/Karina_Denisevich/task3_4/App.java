@@ -3,31 +3,32 @@ package com.github.Karina_Denisevich.task3_4;
 import com.github.Karina_Denisevich.task3_4.stationery.Envelope;
 import com.github.Karina_Denisevich.task3_4.stationery.Notebook;
 import com.github.Karina_Denisevich.task3_4.stationery.Stationery;
+import com.github.Karina_Denisevich.task3_4.utils.BeginnerKit;
+import com.github.Karina_Denisevich.task3_4.utils.IOUtil;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class App {
 
     public static void main(String[] args) {
-        List<Stationery> stationeryList = new ArrayList<>();
+        IOUtil ioUtil = new IOUtil();
+        List<Stationery> stationeryList = new BeginnerKit().getSomeBeginnerKit();
 
-        Notebook notebook = new Notebook("HelloKitty", 3.0, 100);
-        Notebook notebook1 = new Notebook("AelloKitty", 3.0, 200);
-        Envelope envelope = new Envelope("ZZZ", 10.0, 20.0);
-        Envelope envelope1 = new Envelope("AAA", 15.0, 15.0);
+        ioUtil.writeList("Stationery list :", stationeryList);
 
-        stationeryList.add(notebook);
-        stationeryList.add(notebook1);
-        stationeryList.add(envelope);
-        stationeryList.add(envelope1);
+        List<Stationery> stationeryListCopy = new ArrayList<>(stationeryList);
+        Collections.sort(stationeryListCopy);
+        ioUtil.writeList("\nAfter sorting by price and name :", stationeryListCopy);
 
-        System.out.println("Stationery list :");
-        stationeryList.forEach(System.out::println);
+        stationeryListCopy = new ArrayList<>(stationeryList);
+        stationeryListCopy.sort((o1, o2) -> o1.getPrice().compareTo(o2.getPrice()));
+        ioUtil.writeList("\nAfter sorting by price :", stationeryListCopy);
 
-        Collections.sort(stationeryList);
-        System.out.println("\nAfter sorting by price and name :");
-        stationeryList.forEach(System.out::println);
+        stationeryListCopy = new ArrayList<>(stationeryList);
+        stationeryListCopy.sort((o1, o2) -> o1.getName().compareTo(o2.getName()));
+        ioUtil.writeList("\nAfter sorting by name :", stationeryListCopy);
     }
 }
