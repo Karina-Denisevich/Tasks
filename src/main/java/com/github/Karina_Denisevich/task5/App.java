@@ -1,44 +1,41 @@
 package com.github.Karina_Denisevich.task5;
 
-import com.github.Karina_Denisevich.task5.group.Subject;
+import com.github.Karina_Denisevich.task5.group.Group;
 import com.github.Karina_Denisevich.task5.group.SubjectEnum;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+
+import java.util.*;
 
 public class App {
 
     public static void main(String[] args) {
+        //all groups
+        List<Group> groups = new ArrayList<>();
 
-        List<Subject> mathsGroups = new ArrayList<>();
-        List<Subject> englishGroups = new ArrayList<>();
+        //defined groups
+        Group<Double> mathGroup = new Group<>(SubjectEnum.Maths);
+        Group<Integer> englishGroup = new Group<>(SubjectEnum.English);
 
-        Subject<Double> subjectMath1 = new Subject<>(SubjectEnum.Maths);
-        Subject<Double> subjectMath2 = new Subject<>(SubjectEnum.Maths);
-        Subject<Integer> subjectEnglish = new Subject<>(SubjectEnum.English);
-
-        Map<Student, Double> mapMath1 = new HashMap<>();
-        Map<Student, Double> mapMath2 = new HashMap<>();
-        Map<Student, Integer> mapEnglish = new HashMap<>();
+        groups.add(mathGroup);
+        groups.add(englishGroup);
 
         Student student1 = new Student("Karina", "Denisevich");
         Student student2 = new Student("Helen", "Petrova");
 
-        mapMath1.put(student1, 8.2);
-        subjectMath1.setStudentMap(mapMath1);
+        mathGroup.addStudent(student1, 8.8);
+        mathGroup.addStudent(student2, 8.9);
 
-        mapMath2.put(student2, 8.6);
-        subjectMath2.setStudentMap(mapMath2);
+        englishGroup.addStudent(student2, 9);
 
-        mapEnglish.put(student1, 8);
-        mapEnglish.put(student2, 9);
-        subjectEnglish.setStudentMap(mapEnglish);
+        //info about student2
+        for (Group group : groups) {
+            ((Set<Map.Entry>) group.getStudentMap().entrySet()).stream()
+                    .filter(entry -> entry.getKey().equals(student2))
+                    .forEach(entry -> {
+                        System.out.println(group.getSubject() + ": " + entry.getKey() + " - " + entry.getValue());
+                    });
 
-        mathsGroups.add(subjectMath1);
-        mathsGroups.add(subjectMath2);
-        englishGroups.add(subjectEnglish);
+        }
 
     }
 }
