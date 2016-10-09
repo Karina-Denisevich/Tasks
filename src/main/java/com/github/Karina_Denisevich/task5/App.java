@@ -42,7 +42,7 @@ public class App {
     }
 
     /**
-     * The method is to cope data from one map to another.
+     * The method is to copy data from one map to another.
      *
      * @param from map with its data.
      * @param in   map, that be filled.
