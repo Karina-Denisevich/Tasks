@@ -1,11 +1,15 @@
 package com.github.Karina_Denisevich.task6.ships;
 
+import com.github.Karina_Denisevich.task7.annotations.Description;
+
+@Description(createdBy = "Karina", info = "Some info")
 public class NuclearShip {
 
     private static final String COMMON_INFO = "Common info";
     private Integer serialNumber;
 
     public NuclearShip(Integer serialNumber) {
+        System.out.println("Hi!");
         this.serialNumber = serialNumber;
     }
 
@@ -17,7 +21,9 @@ public class NuclearShip {
 
         private String getEngineInfo() {
             return "It is the engine for a nuclear ship. "
-                    .concat(serialNumber.toString()).concat(COMMON_INFO);
+                    .concat(serialNumber.toString())
+                    .concat("  ")
+                    .concat(COMMON_INFO);
         }
     }
 
@@ -38,5 +44,12 @@ public class NuclearShip {
 
     public static String getCommonInfo() {
         return COMMON_INFO;
+    }
+
+    @Override
+    public String toString() {
+        return "NuclearShip{" +
+                "serialNumber=" + serialNumber +
+                '}';
     }
 }
