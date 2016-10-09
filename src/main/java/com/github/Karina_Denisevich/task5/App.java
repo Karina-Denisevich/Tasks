@@ -37,5 +37,19 @@ public class App {
 
         }
 
+        Map<Student, Number> map = new HashMap<>();
+        copy(mathGroup.getStudentMap(), map);
+    }
+
+    /**
+     * The method is to cope data from one map to another.
+     *
+     * @param from map with its data.
+     * @param in   map, that be filled.
+     */
+    private static void copy(Map<Student, ? extends Number> from, Map<Student, ? super Number> in) {
+        for (Map.Entry<Student, ? extends Number> map : from.entrySet()) {
+            in.put(map.getKey(), map.getValue());
+        }
     }
 }
